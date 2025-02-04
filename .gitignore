@@ -1,7 +1,7 @@
 node_modules/
 map/*
 !map/.keep
-config.js
+#config.js
 
 # Logs
 .DS_Store
