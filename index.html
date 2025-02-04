@@ -286,121 +286,249 @@
         // instantiate the scrollama
         var scroller = scrollama();
 
+        // map.on("load", function () {
+        //     if (config.use3dTerrain) {
+        //         map.addSource('terrainSource', {
+        //             'type': 'raster-dem',
+        //             'url': 'map/terrain-tiles/tiles.json',
+        //             tileSize: 256
+        //         });
+
+        //         map.setTerrain({ 'source': 'terrainSource', 'exaggeration': 1 });
+        //     };            
+
+        //     // add custom layers
+        //     if (config.useCustomLayers) {
+        //         for (i = 0; i < externalData.sources.length; i++) {
+        //             let currentSource = externalData.sources[i];
+        //             let sourceObj = { "type": currentSource.type, "url": currentSource.url };
+        //             map.addSource(currentSource.name, sourceObj);
+        //         }
+        //         for (i = 0; i < externalData.layers.length; i++) {
+        //             map.addLayer(externalData.layers[i]); // arrange layers beneath this layer in your Studio map
+        //         }
+        //     }
+
+        //     // As the map moves, grab and update bounds in inset map.
+        //     if (config.inset && !config.legend) {
+        //         map.on('move', getInsetBounds);
+        //     }
+
+        //     // setup the instance, pass callback functions
+        //     scroller
+        //         .setup({
+        //             step: '.step',
+        //             offset: 0.5,
+        //             progress: true
+        //         })
+        //         .onStepEnter(async response => {
+        //             var chapter = config.chapters.find(chap => chap.id === response.element.id);
+
+        //             // add legend to each chapter
+        //             if (config.legend && !config.inset) {
+        //                 for (i = 0; i < config.chapters.length; i++) {
+        //                     if (config.chapters[i].legend != undefined) {
+        //                         if (config.chapters[i].id == response.element.id) {
+        //                             document.getElementById(config.chapters[i].id + "Legend").style.display = "block";
+        //                         } else {
+        //                             document.getElementById(config.chapters[i].id + "Legend").style.display = "none";
+        //                         }
+        //                     }
+        //                 };
+        //             }
+
+        //             response.element.classList.add('active');
+        //             map[chapter.mapAnimation || 'flyTo'](chapter.location);
+        //             // Incase you do not want to have a dynamic inset map,
+        //             // rather want to keep it a static view but still change the
+        //             // bbox as main map move: comment out the below if section.
+        //             if (config.inset && !config.legend) {
+        //                 if (chapter.location.zoom < 5) {
+        //                     insetMap.flyTo({ center: chapter.location.center, zoom: 0 });
+        //                 }
+        //                 else {
+        //                     insetMap.flyTo({ center: chapter.location.center, zoom: 3 });
+        //                 }
+        //             }
+        //             if (config.showMarkers) {
+        //                 marker.setLngLat(chapter.location.center);
+        //             }
+        //             if (chapter.onChapterEnter.length > 0) {
+        //                 chapter.onChapterEnter.forEach(setLayerOpacity);
+        //             }
+
+        //             // set interactive properties for chapters set as mapInteractive = true
+        //             if (chapter.mapInteractive) {
+        //                 map.addControl(navigation);
+        //                 map.dragPan.enable();
+        //                 map.doubleClickZoom.enable();
+        //                 map.getCanvas().style.cursor = 'grab';
+        //             } else {
+        //                 if (map.hasControl(navigation)) {
+        //                     map.removeControl(navigation);
+        //                 }
+        //                 map.dragPan.disable();
+        //                 map.doubleClickZoom.disable();
+        //                 map.getCanvas().style.cursor = 'default';
+        //             }
+        //             if (chapter.callback) {
+        //                 window[chapter.callback]();
+        //             }
+        //             if (chapter.rotateAnimation) {
+        //                 map.once('moveend', () => {
+        //                     const rotateNumber = map.getBearing();
+        //                     map.rotateTo(rotateNumber + 180, {
+        //                         duration: 30000, easing: function (t) {
+        //                             return t;
+        //                         }
+        //                     });
+        //                 });
+        //             }
+
+        //             if (chapter.spinGlobe) {
+        //                 map.once('moveend', () => {
+        //                     const center = map.getCenter();
+        //                     const newCenter = [center.lng + 360, center.lat];
+        //                     map.easeTo({ center: newCenter, duration: 20000, easing: n => n });
+        //                 });
+        //             }
+        //         })
+        //         .onStepExit(response => {
+        //             var chapter = config.chapters.find(chap => chap.id === response.element.id);
+        //             response.element.classList.remove('active');
+        //             if (chapter.onChapterExit.length > 0) {
+        //                 chapter.onChapterExit.forEach(setLayerOpacity);
+        //             }
+        //         });
+        // });
+
         map.on("load", function () {
-            if (config.use3dTerrain) {
-                map.addSource('terrainSource', {
-                    'type': 'raster-dem',
-                    'url': 'map/terrain-tiles/tiles.json',
-                    tileSize: 256
-                });
-
-                map.setTerrain({ 'source': 'terrainSource', 'exaggeration': 1 });
-            };            
-
-            // add custom layers
-            if (config.useCustomLayers) {
-                for (i = 0; i < externalData.sources.length; i++) {
-                    let currentSource = externalData.sources[i];
-                    let sourceObj = { "type": currentSource.type, "url": currentSource.url };
-                    map.addSource(currentSource.name, sourceObj);
-                }
-                for (i = 0; i < externalData.layers.length; i++) {
-                    map.addLayer(externalData.layers[i]); // arrange layers beneath this layer in your Studio map
-                }
-            }
-
-            // As the map moves, grab and update bounds in inset map.
-            if (config.inset && !config.legend) {
-                map.on('move', getInsetBounds);
-            }
-
-            // setup the instance, pass callback functions
-            scroller
-                .setup({
-                    step: '.step',
-                    offset: 0.5,
-                    progress: true
-                })
-                .onStepEnter(async response => {
-                    var chapter = config.chapters.find(chap => chap.id === response.element.id);
-
-                    // add legend to each chapter
-                    if (config.legend && !config.inset) {
-                        for (i = 0; i < config.chapters.length; i++) {
-                            if (config.chapters[i].legend != undefined) {
-                                if (config.chapters[i].id == response.element.id) {
-                                    document.getElementById(config.chapters[i].id + "Legend").style.display = "block";
-                                } else {
-                                    document.getElementById(config.chapters[i].id + "Legend").style.display = "none";
-                                }
-                            }
-                        };
-                    }
-
-                    response.element.classList.add('active');
-                    map[chapter.mapAnimation || 'flyTo'](chapter.location);
-                    // Incase you do not want to have a dynamic inset map,
-                    // rather want to keep it a static view but still change the
-                    // bbox as main map move: comment out the below if section.
-                    if (config.inset && !config.legend) {
-                        if (chapter.location.zoom < 5) {
-                            insetMap.flyTo({ center: chapter.location.center, zoom: 0 });
-                        }
-                        else {
-                            insetMap.flyTo({ center: chapter.location.center, zoom: 3 });
-                        }
-                    }
-                    if (config.showMarkers) {
-                        marker.setLngLat(chapter.location.center);
-                    }
-                    if (chapter.onChapterEnter.length > 0) {
-                        chapter.onChapterEnter.forEach(setLayerOpacity);
-                    }
-
-                    // set interactive properties for chapters set as mapInteractive = true
-                    if (chapter.mapInteractive) {
-                        map.addControl(navigation);
-                        map.dragPan.enable();
-                        map.doubleClickZoom.enable();
-                        map.getCanvas().style.cursor = 'grab';
-                    } else {
-                        if (map.hasControl(navigation)) {
-                            map.removeControl(navigation);
-                        }
-                        map.dragPan.disable();
-                        map.doubleClickZoom.disable();
-                        map.getCanvas().style.cursor = 'default';
-                    }
-                    if (chapter.callback) {
-                        window[chapter.callback]();
-                    }
-                    if (chapter.rotateAnimation) {
-                        map.once('moveend', () => {
-                            const rotateNumber = map.getBearing();
-                            map.rotateTo(rotateNumber + 180, {
-                                duration: 30000, easing: function (t) {
-                                    return t;
-                                }
-                            });
-                        });
-                    }
-
-                    if (chapter.spinGlobe) {
-                        map.once('moveend', () => {
-                            const center = map.getCenter();
-                            const newCenter = [center.lng + 360, center.lat];
-                            map.easeTo({ center: newCenter, duration: 20000, easing: n => n });
-                        });
-                    }
-                })
-                .onStepExit(response => {
-                    var chapter = config.chapters.find(chap => chap.id === response.element.id);
-                    response.element.classList.remove('active');
-                    if (chapter.onChapterExit.length > 0) {
-                        chapter.onChapterExit.forEach(setLayerOpacity);
-                    }
-                });
+    // Load 3D terrain if applicable
+    if (config.use3dTerrain) {
+        map.addSource('terrainSource', {
+            'type': 'raster-dem',
+            'url': 'map/terrain-tiles/tiles.json',
+            tileSize: 256
         });
+        map.setTerrain({ 'source': 'terrainSource', 'exaggeration': 1 });
+    }
+
+    // Add custom sources and layers from sources.js
+    if (config.useCustomLayers) {
+        // Adding sources from externalData.sources
+        for (let sourceName in externalData.sources) {
+            let currentSource = externalData.sources[sourceName];
+            let sourceObj = { 
+                "type": currentSource.type,
+                "tiles": currentSource.tiles,
+                "tileSize": currentSource.tileSize || 256,  // Default to 256 if not defined
+                "maxzoom": currentSource.maxzoom || 18       // Default to 18 if not defined
+            };
+            map.addSource(sourceName, sourceObj);
+        }
+
+        // Adding layers from externalData.layers
+        externalData.layers.forEach(layer => {
+            map.addLayer(layer);  // Add each layer to the map
+        });
+    }
+
+    // As the map moves, grab and update bounds in inset map.
+    if (config.inset && !config.legend) {
+        map.on('move', getInsetBounds);
+    }
+
+    // Setup the scrollama instance, pass callback functions
+    scroller
+        .setup({
+            step: '.step',
+            offset: 0.5,
+            progress: true
+        })
+        .onStepEnter(async response => {
+            var chapter = config.chapters.find(chap => chap.id === response.element.id);
+
+            // Add legend to each chapter
+            if (config.legend && !config.inset) {
+                for (i = 0; i < config.chapters.length; i++) {
+                    if (config.chapters[i].legend != undefined) {
+                        if (config.chapters[i].id == response.element.id) {
+                            document.getElementById(config.chapters[i].id + "Legend").style.display = "block";
+                        } else {
+                            document.getElementById(config.chapters[i].id + "Legend").style.display = "none";
+                        }
+                    }
+                };
+            }
+
+            response.element.classList.add('active');
+            map[chapter.mapAnimation || 'flyTo'](chapter.location);
+
+            // Handle inset map
+            if (config.inset && !config.legend) {
+                if (chapter.location.zoom < 5) {
+                    insetMap.flyTo({ center: chapter.location.center, zoom: 0 });
+                }
+                else {
+                    insetMap.flyTo({ center: chapter.location.center, zoom: 3 });
+                }
+            }
+
+            if (config.showMarkers) {
+                marker.setLngLat(chapter.location.center);
+            }
+
+            if (chapter.onChapterEnter.length > 0) {
+                chapter.onChapterEnter.forEach(setLayerOpacity);
+            }
+
+            // Interactive map handling
+            if (chapter.mapInteractive) {
+                map.addControl(navigation);
+                map.dragPan.enable();
+                map.doubleClickZoom.enable();
+                map.getCanvas().style.cursor = 'grab';
+            } else {
+                if (map.hasControl(navigation)) {
+                    map.removeControl(navigation);
+                }
+                map.dragPan.disable();
+                map.doubleClickZoom.disable();
+                map.getCanvas().style.cursor = 'default';
+            }
+
+            if (chapter.callback) {
+                window[chapter.callback]();
+            }
+
+            if (chapter.rotateAnimation) {
+                map.once('moveend', () => {
+                    const rotateNumber = map.getBearing();
+                    map.rotateTo(rotateNumber + 180, {
+                        duration: 30000, easing: function (t) {
+                            return t;
+                        }
+                    });
+                });
+            }
+
+            if (chapter.spinGlobe) {
+                map.once('moveend', () => {
+                    const center = map.getCenter();
+                    const newCenter = [center.lng + 360, center.lat];
+                    map.easeTo({ center: newCenter, duration: 20000, easing: n => n });
+                });
+            }
+        })
+        .onStepExit(response => {
+            var chapter = config.chapters.find(chap => chap.id === response.element.id);
+            response.element.classList.remove('active');
+            if (chapter.onChapterExit.length > 0) {
+                chapter.onChapterExit.forEach(setLayerOpacity);
+            }
+        });
+});
+
 
         //Helper functions for insetmap
         function getInsetBounds() {
