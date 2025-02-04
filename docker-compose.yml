@@ -1,0 +1,26 @@
+services:  
+  
+  maplibre-storymap:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    image: maplibre-storymap:latest
+    container_name: maplibre-storymap
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:      
+      - PROJECT_PATH=${PROJECT_PATH?Variable not set}
+      - HOST=0.0.0.0          # Specify host as an environment variable
+      - PORT=5000             # Specify port as an environment variable
+    volumes:
+      #- ./maplibre-storymap:/app      
+      - ${PROJECT_PATH:-/home/wrfadmin/projects/maps/projects/cogremote}:/app/map
