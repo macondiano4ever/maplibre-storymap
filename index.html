@@ -264,6 +264,18 @@
             maplibreLogo: true
         });
 
+            // add custom layers
+            if (config.useCustomLayers) {
+                for (i = 0; i < externalData.sources.length; i++) {
+                    let currentSource = externalData.sources[i];
+                    let sourceObj = { "type": currentSource.type, "url": currentSource.url };
+                    map.addSource(currentSource.name, sourceObj);
+                }
+                for (i = 0; i < externalData.layers.length; i++) {
+                    map.addLayer(externalData.layers[i]); // arrange layers beneath this layer in your Studio map
+                }
+            };
+
         // Create a inset map if enabled in config.js
         if (config.inset && !config.legend) {
             var insetMap = new maplibregl.Map({
@@ -297,17 +309,17 @@
                 map.setTerrain({ 'source': 'terrainSource', 'exaggeration': 1 });
             };            
 
-            // add custom layers
-            if (config.useCustomLayers) {
-                for (i = 0; i < externalData.sources.length; i++) {
-                    let currentSource = externalData.sources[i];
-                    let sourceObj = { "type": currentSource.type, "url": currentSource.url };
-                    map.addSource(currentSource.name, sourceObj);
-                }
-                for (i = 0; i < externalData.layers.length; i++) {
-                    map.addLayer(externalData.layers[i]); // arrange layers beneath this layer in your Studio map
-                }
-            }
+            // // add custom layers
+            // if (config.useCustomLayers) {
+            //     for (i = 0; i < externalData.sources.length; i++) {
+            //         let currentSource = externalData.sources[i];
+            //         let sourceObj = { "type": currentSource.type, "url": currentSource.url };
+            //         map.addSource(currentSource.name, sourceObj);
+            //     }
+            //     for (i = 0; i < externalData.layers.length; i++) {
+            //         map.addLayer(externalData.layers[i]); // arrange layers beneath this layer in your Studio map
+            //     }
+            // }
 
             // As the map moves, grab and update bounds in inset map.
             if (config.inset && !config.legend) {

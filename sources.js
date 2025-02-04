@@ -4,19 +4,19 @@ var externalData = {
         // {
         //     "name": "harvey",
         //     "type": "raster",
-        //     "url": "titiler:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/harvey.tiff&colormap_name=coolwarm",                        
+        //     "url": "http://localhost:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/harvey.tiff&colormap_name=coolwarm",                        
         // },
 
         // {   
         //     "name": "landsat",
         //     "type": "raster",
-        //     "url": "titiler:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/landsat.tiff&bidx=1&expression=b1&colormap_name=coolwarm"            
+        //     "url": "http://localhost:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/landsat.tiff&bidx=1&expression=b1&colormap_name=coolwarm"            
         // },
 
         // {
         //     "name": "libya",
         //     "type": "raster",
-        //     "url": "titiler:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/libya.tiff&bidx=1&expression=b1&colormap_name=coolwarm"
+        //     "url": "http://localhost:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/libya.tiff&bidx=1&expression=b1&colormap_name=coolwarm"
         // }
 
     ],
