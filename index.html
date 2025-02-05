@@ -15,7 +15,7 @@
     <div id="mapInset"></div>
     <div id="story"></div>
     <script src="./map/config.js"></script>
-    <script src="./sources.js"></script>
+    <script src="./map/sources.js"></script>
     <script>
         var initLoad = true;
         var layerTypes = {
@@ -297,16 +297,17 @@
         map.setTerrain({ 'source': 'terrainSource', 'exaggeration': 1 });
     }
 
+    
     // Add custom sources and layers from sources.js
     if (config.useCustomLayers) {
         // Adding sources from externalData.sources
         for (let sourceName in externalData.sources) {
             let currentSource = externalData.sources[sourceName];
             let sourceObj = { 
-                "type": currentSource.type,
-                "tiles": currentSource.tiles,
-                "tileSize": currentSource.tileSize || 256,  // Default to 256 if not defined
-                "maxzoom": currentSource.maxzoom || 18       // Default to 18 if not defined
+                type: currentSource.type,
+                tiles: currentSource.tiles,
+                tileSize: currentSource.tileSize || 256,  // Default to 256 if not defined
+                maxzoom: currentSource.maxzoom || 18       // Default to 18 if not defined
             };
             map.addSource(sourceName, sourceObj);
         }
@@ -316,6 +317,7 @@
             map.addLayer(layer);  // Add each layer to the map
         });
     }
+
 
     // As the map moves, grab and update bounds in inset map.
     if (config.inset && !config.legend) {
