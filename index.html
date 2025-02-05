@@ -327,8 +327,8 @@
     scroller
         .setup({
             step: '.step',
-            offset: 0.5,
-            progress: true
+            offset: 1.0,
+            progress: false
         })
         .onStepEnter(async response => {
             var chapter = config.chapters.find(chap => chap.id === response.element.id);

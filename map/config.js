@@ -19,10 +19,30 @@ var config = {
     footer: 'Source: source citations, etc.<br> Created using <a href="https://github.com/digidem/maplibre-storymap" target="_blank">MapLibre Storytelling</a> template.',
     chapters: [
         {
-            id: 'start-chapter-id0',
-            alignment: 'left',
+            id: "overview",
+            alignment: "left",
             hidden: false,
-            title: 'Landsat Imagery',
+            title: "Overview",
+            image: "",
+            description:
+              "This page showcases the creation of story maps using simple images stored locally or served by external resources as well as the use of Cloud Optimized GeoTIFF (COG) data",
+            location: {
+              center: [-98.5795, 39.8283],
+              zoom: 3,
+              pitch: 0,
+              bearing: 0,
+            },
+            mapAnimation: "flyTo",
+            rotateAnimation: false,
+            callback: "",
+            onChapterEnter: [],
+            onChapterExit: [],
+        },
+        {
+            id: 'start-chapter-id',
+            alignment: 'right',
+            hidden: false,
+            title: 'Just a picture of the northern light served locally',
             image: './map/images/norway.avif',
             description: 'Northern light in Norway',
             location: {                
@@ -37,16 +57,16 @@ var config = {
             mapInteractive: false,
             callback: '',
             onChapterEnter: [
-                // {
-                //     // layer: 'countries-fill',
-                //     // opacity: 0
-                // }
+                {
+                    layer: 'countries-fill',
+                    opacity: 0.9
+                }
             ],
             onChapterExit: []
-        },            
+        },           
 
         {
-            id: 'landsat-chapter-id0',
+            id: 'landsat-chapter-id',
             alignment: 'right',
             hidden: false,
             title: 'Landsat Imagery',
@@ -165,6 +185,58 @@ var config = {
                 //     opacity: 0
                 // }
             ]
+        },
+                
+        {
+          id: "sentinel-imagery",
+          alignment: "left",
+          hidden: false,
+          title: "Sentinel-2 Satellite Imagery",
+          image: "",
+          description:
+            "This chapter displays a true color image from the Sentinel-2 satellite, showcasing the capabilities of COG for storing and serving large satellite imagery.",
+          location: {
+            center: [-58.59026986356122, -34.82450779755129,8],
+            zoom: 14,
+            pitch: 0,
+            bearing: 0,
+          },
+          mapAnimation: "flyTo",
+          rotateAnimation: false,
+          callback: "",
+          onChapterEnter: [
+            {
+              layer: "sentinel",
+              opacity: 1,
+            }
+          ],
+          onChapterExit: [
+            {
+              layer: "sentinel",
+              opacity: 0,
+            }
+          ]
+        },
+
+        {
+          id: "conclusion",
+          alignment: "right",
+          hidden: false,
+          title: "Conclusion",
+          image: "",
+          description:
+            "Cloud Optimized GeoTIFFs provide an efficient way to serve and visualize large geospatial datasets, as demonstrated by these elevation and imagery examples.",
+          location: {
+            center: [-98.5795, 39.8283],
+            zoom: 3,
+            pitch: 0,
+            bearing: 0,
+          },
+          mapAnimation: "flyTo",
+          rotateAnimation: false,
+          callback: "",
+          onChapterEnter: [],
+          onChapterExit: [],
         }
     ]
 };
