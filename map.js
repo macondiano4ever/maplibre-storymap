@@ -302,17 +302,10 @@ map.on("load", function () {
 
     // Add custom sources and layers from sources.js
     if (config.useCustomLayers) {
-        // Adding sources from externalData.sources
-        for (let sourceName in externalData.sources) {
-            let currentSource = externalData.sources[sourceName];
-            let sourceObj = { 
-                type: currentSource.type,
-                tiles: currentSource.tiles,
-                tileSize: currentSource.tileSize || 256,  // Default to 256 if not defined
-                maxzoom: currentSource.maxzoom || 18       // Default to 18 if not defined
-            };
-            map.addSource(sourceName, sourceObj);
-        }
+        // Adding sources from externalData.sources directly
+        externalData.sources.forEach(source => {
+            map.addSource(source.name, source);  // `source.name` will be the key (or source ID)
+        });
 
         // Adding layers from externalData.layers
         externalData.layers.forEach(layer => {

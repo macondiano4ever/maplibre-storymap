@@ -1,7 +1,8 @@
 var externalData = {
-    sources: {
+    sources: [
 
-        landsat: {
+        {
+            name: "landsat",
             // local stored COG tiles served by titiler
             tiles: [
                 "http://localhost:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/landsat.tiff&bidx=1&expression=b1&colormap_name=coolwarm"
@@ -11,7 +12,8 @@ var externalData = {
             maxzoom: 12
         },
 
-        harvey: {
+        {
+            name: "harvey",
             // local stored COG tiles served by titiler
             tiles: [
                 "http://localhost:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/harvey.tiff&bidx=1&expression=b1&colormap_name=coolwarm"
@@ -19,7 +21,8 @@ var externalData = {
             type: "raster"
         },
         
-        libya: {
+        {
+            name: "libya", 
             // local stored COG tiles served by titiler
             tiles: [
                 "http://localhost:8000/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=/app/data/libya.tiff&bidx=1&expression=b1&colormap_name=coolwarm"
@@ -28,7 +31,8 @@ var externalData = {
         },
                
         // Add Sentinel-2 imagery source and layer
-        sentinel: {
+        {
+            name: "sentinel",
             // remote tile 
             tiles: [
                 "https://titiler.xyz/cog/tiles/{z}/{x}/{y}?url=https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/21/H/UB/2021/9/S2B_21HUB_20210915_0_L2A/TCI.tif"
@@ -37,8 +41,15 @@ var externalData = {
             tileSize: 256,
             minzoom: 8,
             maxzoom: 14
+        },
+
+
+        {
+            name: "rwanda",
+            type: "geojson",
+            data: "https://maplibre.org/maplibre-gl-js/docs/assets/rwanda-provinces.geojson"
         }
-    },
+    ],
 
 
     layers: [
