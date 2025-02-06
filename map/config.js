@@ -27,8 +27,8 @@ var config = {
             description:
               "This page showcases the creation of story maps using simple images stored locally or served by external resources as well as the use of Cloud Optimized GeoTIFF (COG) data",
             location: {
-              center: [-98.5795, 39.8283],
-              zoom: 3,
+              center: [10, 60],
+              zoom: 2,
               pitch: 0,
               bearing: 0,
             },
@@ -46,8 +46,8 @@ var config = {
             image: './map/images/norway.avif',
             description: 'Northern light in Norway',
             location: {                
-                center: [10, 60],
-                zoom: 2,
+                center: [18.9551, 69.6489],
+                zoom: 6,
                 pitch: 0,
                 bearing: 0
 
@@ -67,7 +67,7 @@ var config = {
 
         {
             id: 'landsat-chapter-id',
-            alignment: 'right',
+            alignment: 'left',
             hidden: false,
             title: 'Landsat Imagery',
             image: './map/images/Landsat.jpg',

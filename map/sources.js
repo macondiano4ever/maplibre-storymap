@@ -31,12 +31,12 @@ var externalData = {
         sentinel: {
             // remote tile 
             tiles: [
-                "https://titiler.xyz/cog/tiles/{z}/{x}/{y}?url=https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/21/H/UB/2021/9/S2B_21HUB_20210915_0_L2A/TCI.tif",
+                "https://titiler.xyz/cog/tiles/{z}/{x}/{y}?url=https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/21/H/UB/2021/9/S2B_21HUB_20210915_0_L2A/TCI.tif"
             ],
             type: "raster",            
             tileSize: 256,
             minzoom: 8,
-            maxzoom: 14,
+            maxzoom: 14
         }
     },
 
