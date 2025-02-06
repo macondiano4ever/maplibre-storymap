@@ -22,5 +22,4 @@ services:
       - HOST=0.0.0.0          # Specify host as an environment variable
       - PORT=5000             # Specify port as an environment variable
     volumes:
-      #- ./maplibre-storymap:/app      
-      - ${PROJECT_PATH:-/home/wrfadmin/projects/maps/projects/cogremote}:/app/map
+      - ${PROJECT_PATH}:/app/map
