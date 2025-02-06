@@ -94,7 +94,7 @@ var config = {
 
         {
             id: 'landsat-chapter-id1',
-            alignment: 'left',
+            alignment: 'right',
             hidden: false,
             title: 'Another Landsat Image',
             image: './map/images/Landsat2.webp',
@@ -121,7 +121,7 @@ var config = {
 
         {
             id: 'harvey-chapter-id',
-            alignment: 'right',
+            alignment: 'left',
             hidden: false,
             title: 'Harvey Hurricane',
             image: './map/images/Harvey.jpg',
@@ -148,7 +148,7 @@ var config = {
         },   
         {
             id: 'libya-chapter-id',
-            alignment: 'left',
+            alignment: 'right',
             hidden: false,
             title: 'Libya',
             image: './map/images/Libya.jpg',
@@ -188,39 +188,8 @@ var config = {
         },
                 
         {
-          id: "sentinel-imagery",
-          alignment: "left",
-          hidden: false,
-          title: "Sentinel-2 Satellite Imagery",
-          image: "",
-          description:
-            "This chapter displays a true color image from the Sentinel-2 satellite, showcasing the capabilities of COG for storing and serving large satellite imagery.",
-          location: {
-            center: [-58.59026986356122, -34.82450779755129,8],
-            zoom: 14,
-            pitch: 0,
-            bearing: 0,
-          },
-          mapAnimation: "flyTo",
-          rotateAnimation: false,
-          callback: "",
-          onChapterEnter: [
-            {
-              layer: "sentinel",
-              opacity: 1,
-            }
-          ],
-          onChapterExit: [
-            {
-              layer: "sentinel",
-              opacity: 0,
-            }
-          ]
-        },
-
-        {
           id: "conclusion",
-          alignment: "right",
+          alignment: "left",
           hidden: false,
           title: "Conclusion",
           image: "",
