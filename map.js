@@ -350,7 +350,7 @@ map.on("load", function () {
 
             // set interactive properties for chapters set as mapInteractive = true
             if (chapter.mapInteractive) {
-                map.addControl(navigation);
+                map.addControl(navigation, 'top-left');
                 map.dragPan.enable();
                 map.doubleClickZoom.enable();
                 map.getCanvas().style.cursor = 'grab';
