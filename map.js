@@ -249,24 +249,6 @@ var map = new maplibregl.Map({
     maplibreLogo: true
 });
 
-// Function to show error message on map
-function showTileErrorMessage(e) {
-    const coordinates = e.lngLat;
-    const message = "Tile not available";
-    const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false })
-        .setLngLat(coordinates)
-        .setHTML(message)
-        .addTo(map);
-}
-
-// Listen for tile loading errors
-map.on('error', function(e) {
-    if (e.error.message === 'Failed to load resource') {
-        // Show error message on map when tile fails to load
-        showTileErrorMessage(e);
-    }
-});
-
 // Create a inset map if enabled in config.js
 if (config.inset && !config.legend) {
     var insetMap = new maplibregl.Map({
