@@ -1,5 +1,5 @@
 var config = {
-    style: 'map/style.json',
+    style: './demo/map/style.json',
     showMarkers: false,
     markerColor: '#3FB1CE',
     inset: true, // if inset map is set to true, legend will be disabled.
@@ -20,7 +20,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: 'First Title',
-            image: 'images/tobi.jpg',
+            image: './demo/images/tobi.jpg',
             caption: '',
             website: '',
             author: '',
@@ -60,7 +60,7 @@ var config = {
             alignment: 'right',
             hidden: false,
             title: 'Second Title',
-            image: 'images/mochi.jpg',
+            image: './demo/images/mochi.jpg',
             description: 'Here, we just turn off <strong>countries-fill</strong> just to demonstrate the functionality. This would look a lot nicer with a custom map and layers etc. as used for a typical story map.',
             location: {
                 center: [-79, 0],
