@@ -17,21 +17,22 @@ var alignments = {
 };
 
 function getLayerPaintType(layer) {
+    console.log(layer);
     var layerType = map.getLayer(layer).type;
     return layerTypes[layerType];
 }
 
 function setLayerOpacity(layer) {
-    var paintProps = getLayerPaintType(layer.layer);
-    paintProps.forEach(function (prop) {
-        var options = {};
-        if (layer.duration) {
-            var transitionProp = prop + "-transition";
-            options = { "duration": layer.duration };
-            map.setPaintProperty(layer.layer, transitionProp, options);
-        }
-        map.setPaintProperty(layer.layer, prop, layer.opacity, options);
-    });
+    // var paintProps = getLayerPaintType(layer.layer);
+    // paintProps.forEach(function (prop) {
+    //     var options = {};
+    //     if (layer.duration) {
+    //         var transitionProp = prop + "-transition";
+    //         options = { "duration": layer.duration };
+    //         map.setPaintProperty(layer.layer, transitionProp, options);
+    //     }
+    //     map.setPaintProperty(layer.layer, prop, layer.opacity, options);
+    // });
 }
 
 // add navigation control for interactive chapters
